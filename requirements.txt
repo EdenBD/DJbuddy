@@ -1,0 +1,15 @@
+# LLM
+langchain==0.0.288
+streamlit==1.26.0
+openai==0.27.8
+
+# Data extraction
+numpy==1.25.2
+pandas==2.1.0
+tqdm==4.66.1
+
+# Notebook
+ipykernel==6.25.2
+
+# Formatting
+black==23.3.0
