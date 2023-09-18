@@ -1,6 +1,6 @@
-# DJbuddy
+# DJbuddy [In development]
 
-This app was created to help DJs find inspiration from other DJ tracks and data bases. 
+This app aims to help DJs find inspiration from other DJ tracks and data bases. 
 
 ## Demo
 <!-- TODO -->
