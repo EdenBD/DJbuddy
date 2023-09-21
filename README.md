@@ -25,10 +25,10 @@ Optionally, you can also add an Ipython kerenl for Jupyter notebook:
 python -m ipykernel install --user --name djbuddy --display-name djbuddy
 ```
 
-2. Create a .env file in the root directory and add the following:
+2. Create a .streamlit/secrets.toml file and add the following:
 
-```env
-OPENAI_API_KEY='xxxxxxxxxxxx'
+```secrets.toml
+OPENAI_API_KEY='sk_xxxxxxx'
 ```
 
 3. Run the app:

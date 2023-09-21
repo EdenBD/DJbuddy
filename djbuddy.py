@@ -16,26 +16,30 @@ SAVED_SESSIONS = {
 # Configure page outlook
 st.set_page_config(
     page_title="DJ Buddy",
-    page_icon="random",
+    page_icon=":piano:",
     layout="wide",
     initial_sidebar_state="expanded",  # "collapsed"
 )
 
 "# DJ With Inspiration [WIP]"
 
-# Setup OpenAI key in Streamlit
-user_openai_api_key = st.sidebar.text_input(
-    "OpenAI API Key", type="password", help="Set this to run your own custom questions."
-)
-
-if user_openai_api_key:
-    openai_api_key = user_openai_api_key
-    enable_custom = True
-    st.success("Key provided successfully!", icon="✅")
-
-else:
+# Setup user's OpenAI key
+with st.sidebar:
+    st.title("Open AI Key")
     openai_api_key = "not_supplied"
     enable_custom = False
+    user_openai_api_key = st.sidebar.text_input(
+        "OpenAI API Key",
+        type="password",
+        help="Set this to run your own custom questions.",
+    )
+    if not (user_openai_api_key.startswith("sk-") and len(user_openai_api_key) == 51):
+        st.warning("Please enter your credentials!", icon="⚠️")
+    else:
+        openai_api_key = user_openai_api_key
+        enable_custom = True
+        st.success("Proceed to entering your custom message!", icon="👉")
+
 
 ##### Langchain #####
 
@@ -89,6 +93,7 @@ if submit_clicked:
         print(f"Playing saved session: {session_path}")
         # TODO
         # answer = playback_callbacks([st_callback], str(session_path), max_pause_time=2)
+        answer = ""
     else:
         answer = buddy.run(user_input, callbacks=[st_callback])
 
