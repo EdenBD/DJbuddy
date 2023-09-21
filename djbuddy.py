@@ -16,7 +16,7 @@ SAVED_SESSIONS = {
 # Configure page outlook
 st.set_page_config(
     page_title="DJ Buddy",
-    page_icon=":piano:",
+    page_icon=":musical_keyboard:",
     layout="wide",
     initial_sidebar_state="expanded",  # "collapsed"
 )
@@ -65,23 +65,19 @@ buddy = initialize_agent(
 
 # User form to submit a question
 with st.form(key="form"):
-    if not enable_custom:
-        "Ask one of the sample questions, or enter your API Key in the sidebar to ask your own custom questions."
-    prefilled = st.selectbox("Sample questions", sorted(SAVED_SESSIONS.keys())) or ""
-    user_input = ""
+    st.write(
+        f"Ask one of the sample questions, or {'enter your API Key in the sidebar to' if not enable_custom else ''} submit your own question."
+    )
 
-    if enable_custom:
-        user_input = st.text_input("Or, ask a question to inspire your mix")
-    if not user_input:
-        user_input = prefilled
+    selected = st.selectbox("Sample questions", sorted(SAVED_SESSIONS.keys())) or ""
+    user_input = st.text_input("Custom question") if enable_custom else selected
     submit_clicked = st.form_submit_button("Submit Question")
 
-# Output
+# Output populated once question submitted
 output_container = st.empty()
 if submit_clicked:
     output_container = output_container.container()
     output_container.chat_message("user").write(user_input)
-
     answer_container = output_container.chat_message("buddy", avatar="🦜")
     # To display agent's actions
     st_callback = StreamlitCallbackHandler(answer_container)
