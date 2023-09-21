@@ -25,7 +25,7 @@ st.set_page_config(
 
 # Setup user's OpenAI key
 with st.sidebar:
-    st.title("Open AI Key")
+    st.title("Settings")
     openai_api_key = "not_supplied"
     enable_custom = False
     user_openai_api_key = st.sidebar.text_input(

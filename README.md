@@ -4,7 +4,7 @@ This app aims to help DJs find inspiration from other DJ tracks and data bases.
 
 ## Demo
 <!-- TODO -->
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](URL_TO_YOUR_APP)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://djbuddy.streamlit.app/)
 
 ## Requirements:
 
